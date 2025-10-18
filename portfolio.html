@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - DigitalFlow</title>
+    <meta name="description"
+        content="Explore our portfolio of successful digital marketing projects. See how we've helped businesses grow through innovative strategies and creative solutions.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Animation Libraries -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            /* Light Mode Colors */
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F8FAFC;
+            --bg-tertiary: #F1F5F9;
+            --text-primary: #1F2937;
+            --text-secondary: #64748B;
+            --text-tertiary: #94A3B8;
+            --accent-primary: #2DD4BF;
+            --accent-secondary: #6B46C1;
+            --accent-success: #10B981;
+            --accent-warning: #F59E0B;
+            --border-color: #E5E7EB;
+            --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-heavy: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+            /* Gradients */
+            --primary-gradient: linear-gradient(135deg, #3B82F6 0%, #6B46C1 100%);
+            --secondary-gradient: linear-gradient(135deg, #F59E0B 0%, #F97316 100%);
+            --accent-gradient: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0F172A;
+            --bg-secondary: #1E293B;
+            --bg-tertiary: #334155;
+            --text-primary: #F8FAFC;
+            --text-secondary: #CBD5E1;
+            --text-tertiary: #94A3B8;
+            --accent-primary: #60A5FA;
+            --accent-secondary: #A78BFA;
+            --accent-success: #34D399;
+            --accent-warning: #FBBF24;
+            --border-color: #374151;
+            --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-heavy: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+
+            --primary-gradient: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
+            --secondary-gradient: linear-gradient(135deg, #FBBF24 0%, #FB923C 100%);
+            --accent-gradient: linear-gradient(135deg, #34D399 0%, #6EE7B7 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Navigation */
+        .navbar {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            transform: translateY(0);
+        }
+
+        [data-theme="dark"] .navbar {
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(51, 65, 85, 0.2);
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.75rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .navbar-brand img {
+            height: 50px;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--accent-primary);
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-tertiary);
+            transform: scale(1.05);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .theme-toggle i {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 140px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('./resources/hero-bg.jpg') center/cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 80px 0 40px;
+            background: var(--bg-primary);
+            text-align: center;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
+            color: var(--text-secondary);
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-gradient);
+            border-color: transparent;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-light);
+        }
+
+        /* Portfolio Grid */
+        .portfolio-section {
+            padding: 40px 0 120px;
+            background: var(--bg-primary);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .portfolio-item {
+            background: var(--bg-primary);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-heavy);
+            border-color: var(--accent-primary);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-image {
+            transform: scale(1.05);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.9) 0%, rgba(107, 70, 193, 0.9) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .overlay-content {
+            text-align: center;
+            color: white;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-item:hover .overlay-content {
+            transform: translateY(0);
+        }
+
+        .overlay-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .overlay-category {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .overlay-btn {
+            background: white;
+            color: var(--accent-primary);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .overlay-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .portfolio-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .portfolio-category {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .portfolio-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .portfolio-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-success);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Load More Button */
+        .load-more-section {
+            text-align: center;
+            padding: 60px 0;
+            background: var(--bg-secondary);
+        }
+
+        .btn-load-more {
+            background: var(--primary-gradient);
+            border: none;
+            padding: 14px 32px;
+            font-weight: 600;
+            border-radius: 50px;
+            color: white;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-load-more:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            background: var(--bg-primary);
+            border-radius: 20px;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow: auto;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .lightbox.active .lightbox-content {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-close:hover {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .lightbox-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .lightbox-details {
+            padding: 2rem;
+        }
+
+        .lightbox-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .lightbox-category {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .lightbox-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .lightbox-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .lightbox-stat {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .lightbox-stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-success);
+            margin-bottom: 0.5rem;
+        }
+
+        .lightbox-stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Case Studies Section */
+        .case-studies-section {
+            padding: 120px 0;
+            background: var(--bg-secondary);
+        }
+
+        .case-study {
+            background: var(--bg-primary);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-light);
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .case-study:hover {
+            box-shadow: var(--shadow-medium);
+            border-color: var(--accent-primary);
+        }
+
+        .case-study-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .case-study-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .case-study-text {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .case-study-results {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .result-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .result-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .result-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .result-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 80px 0 40px;
+        }
+
+        [data-theme="dark"] .footer {
+            background: #0F172A;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 1.25rem;
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-social a:hover {
+            color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .footer-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .case-study-content {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .filter-btn {
+                width: 200px;
+            }
+
+            .theme-toggle {
+                width: 40px;
+                height: 40px;
+                margin-left: 0.5rem;
+            }
+
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="./logo-png.png">Everbloom</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="portfolio.html">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <div class="theme-toggle" id="theme-toggle" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title fade-in">Our Portfolio</h1>
+            <p class="page-subtitle fade-in">
+                Explore our collection of successful projects and see how we've helped businesses achieve their digital
+                marketing goals.
+            </p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web-design">Web Design</button>
+                <button class="filter-btn" data-filter="seo">SEO</button>
+                <button class="filter-btn" data-filter="social-media">Social Media</button>
+                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section">
+        <div class="container">
+            <div class="portfolio-grid" id="portfolio-grid">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item fade-in" data-category="web-design">
+                    <div class="position-relative">
+                        <img src="./resources/portfolio-1.jpg" alt="Modern Web Design" class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3 class="overlay-title">Modern Web Design</h3>
+                                <p class="overlay-category">Web Design</p>
+                                <button class="overlay-btn" onclick="openLightbox(1)">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">TechCorp Website Redesign</h3>
+                        <p class="portfolio-category">Web Design & Development</p>
+                        <p class="portfolio-description">
+                            Complete redesign of TechCorp's corporate website with modern aesthetics, improved UX, and
+                            mobile-first approach.
+                        </p>
+                        <div class="portfolio-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">+150%</div>
+                                <div class="stat-label">Traffic Increase</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">-40%</div>
+                                <div class="stat-label">Bounce Rate</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">+85%</div>
+                                <div class="stat-label">Lead Generation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item fade-in" data-category="ecommerce">
+                    <div class="position-relative">
+                        <img src="./resources/portfolio-2.jpg" alt="E-commerce Platform" class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3 class="overlay-title">E-commerce Platform</h3>
+                                <p class="overlay-category">E-commerce</p>
+                                <button class="overlay-btn" onclick="openLightbox(2)">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">FashionHub Online Store</h3>
+                        <p class="portfolio-category">E-commerce Development</p>
+                        <p class="portfolio-description">
+                            Built a scalable e-commerce platform with advanced features, payment integration, and
+                            inventory management system.
+                        </p>
+                        <div class="portfolio-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">+300%</div>
+                                <div class="stat-label">Online Sales</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">+250%</div>
+                                <div class="stat-label">Conversion Rate</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">+180%</div>
+                                <div class="stat-label">Customer Base</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item fade-in" data-category="web-design">
+                    <div class="position-relative">
+                        <img src="./resources/portfolio-3.jpg" alt="Mobile App Design" class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3 class="overlay-title">Mobile App Design</h3>
+                                <p class="overlay-category">Web Design</p>
+                                <button class="overlay-btn" onclick="openLightbox(3)">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">FitLife Mobile App</h3>
+                        <p class="portfolio-category">Mobile App Design</p>
+                        <p class="portfolio-description">
+                            Designed a comprehensive fitness tracking app with intuitive UI, social features, and
+                            personalized workout plans.
+                        </p>
+                        <div class="portfolio-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">50K+</div>
+                                <div class="stat-label">Downloads</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">4.8★</div>
+                                <div class="stat-label">App Rating</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">85%</div>
+                                <div class="stat-label">User Retention</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 4 -->
+                <div class="portfolio-item fade-in" data-category="seo">
+                    <div class="position-relative">
+                        <img src="./resources/service-seo.jpg" alt="SEO Campaign" class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3 class="overlay-title">SEO Campaign</h3>
+                                <p class="overlay-category">SEO</p>
+                                <button class="overlay-btn" onclick="openLightbox(4)">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">LocalBiz SEO Success</h3>
+                        <p class="portfolio-category">Search Engine Optimization</p>
+                        <p class="portfolio-description">
+                            Implemented comprehensive SEO strategy for local business, resulting in top rankings for
+                            competitive keywords.
+                        </p>
+                        <div class="portfolio-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">#1</div>
+                                <div class="stat-label">Google Ranking</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">+400%</div>
+                                <div class="stat-label">Organic Traffic</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">+200%</div>
+                                <div class="stat-label">Local Leads</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 5 -->
+                <div class="portfolio-item fade-in" data-category="social-media">
+                    <div class="position-relative">
+                        <img src="./resources/portfolio-5.jpg" alt="Social Media Campaign" class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3 class="overlay-title">Social Media Campaign</h3>
+                                <p class="overlay-category">Social Media</p>
+                                <button class="overlay-btn" onclick="openLightbox(5)">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">EcoBrand Social Launch</h3>
+                        <p class="portfolio-category">Social Media Marketing</p>
+                        <p class="portfolio-description">
+                            Launched comprehensive social media presence for sustainable brand with engaging content and
+                            community building.
+                        </p>
+                        <div class="portfolio-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">+500%</div>
+                                <div class="stat-label">Followers</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">+350%</div>
+                                <div class="stat-label">Engagement</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">+280%</div>
+                                <div class="stat-label">Brand Mentions</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item fade-in" data-category="branding">
+                    <div class="position-relative">
+                        <img src="./resources/portfolio-6.jpg" alt="Brand Identity" class="portfolio-image">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3 class="overlay-title">Brand Identity</h3>
+                                <p class="overlay-category">Branding</p>
+                                <button class="overlay-btn" onclick="openLightbox(6)">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">InnoTech Rebranding</h3>
+                        <p class="portfolio-category">Brand Identity & Design</p>
+                        <p class="portfolio-description">
+                            Complete rebranding for technology startup including logo, visual identity, and brand
+                            guidelines.
+                        </p>
+                        <div class="portfolio-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">+120%</div>
+                                <div class="stat-label">Brand Recognition</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">+90%</div>
+                                <div class="stat-label">Market Position</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">+160%</div>
+                                <div class="stat-label">Investor Interest</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Load More Section -->
+    <section class="load-more-section">
+        <div class="container text-center">
+            <button class="btn-load-more fade-in" onclick="loadMoreProjects()">Load More Projects</button>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="case-studies-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Success Stories</h2>
+                <p class="section-subtitle">Detailed case studies showcasing our impact on client businesses</p>
+            </div>
+
+            <div class="case-study fade-in">
+                <h3 class="case-study-title">TechCorp: From Startup to Industry Leader</h3>
+                <div class="case-study-content">
+                    <div class="case-study-text">
+                        <p>TechCorp approached us as a promising startup struggling to gain market traction. They needed
+                            a complete digital transformation to compete with established players in their industry.</p>
+                        <p>We developed a comprehensive strategy including website redesign, SEO optimization, content
+                            marketing, and targeted PPC campaigns. The results exceeded all expectations.</p>
+                        <p>Within 12 months, TechCorp became a recognized industry leader, with their website ranking #1
+                            for 15+ competitive keywords and generating over 500 qualified leads monthly.</p>
+                    </div>
+                    <div class="case-study-results">
+                        <div class="result-item">
+                            <div class="result-value">+400%</div>
+                            <div class="result-label">Organic Traffic</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-value">+250%</div>
+                            <div class="result-label">Lead Generation</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-value">+180%</div>
+                            <div class="result-label">Revenue Growth</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-study fade-in">
+                <h3 class="case-study-title">FashionHub: E-commerce Excellence</h3>
+                <div class="case-study-content">
+                    <div class="case-study-text">
+                        <p>FashionHub was a brick-and-mortar retailer looking to establish a strong online presence.
+                            They needed an e-commerce platform that could compete with major online fashion retailers.
+                        </p>
+                        <p>Our team designed and developed a cutting-edge e-commerce website with advanced features,
+                            integrated marketing automation, and a comprehensive digital marketing strategy.</p>
+                        <p>The transformation was remarkable - FashionHub now processes over 1,000 orders daily and has
+                            become a leading online fashion destination in their market.</p>
+                    </div>
+                    <div class="case-study-results">
+                        <div class="result-item">
+                            <div class="result-value">+350%</div>
+                            <div class="result-label">Online Sales</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-value">+280%</div>
+                            <div class="result-label">Conversion Rate</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-value">+220%</div>
+                            <div class="result-label">Customer Base</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <div class="lightbox-content">
+            <img id="lightbox-image" src="" alt="" class="lightbox-image">
+            <div class="lightbox-details">
+                <h2 id="lightbox-title" class="lightbox-title"></h2>
+                <p id="lightbox-category" class="lightbox-category"></p>
+                <p id="lightbox-description" class="lightbox-description"></p>
+                <div id="lightbox-stats" class="lightbox-stats"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">Everbloom</div>
+                    <p class="footer-text">
+                        Transforming businesses through innovative digital marketing strategies. We help brands connect,
+                        engage, and grow in the digital landscape with data-driven solutions.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5 class="footer-title">Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="services.html">SEO Optimization</a></li>
+                        <li><a href="services.html">Social Media</a></li>
+                        <li><a href="services.html">PPC Advertising</a></li>
+                        <li><a href="services.html">Web Design</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5 class="footer-title">Company</h5>
+                    <ul class="footer-links">
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5 class="footer-title">Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Guides</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5 class="footer-title">Contact</h5>
+                    <ul class="footer-links">
+                        <li><a href="mailto:hello@digitalflow.com">hello@digitalflow.com</a></li>
+                        <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                        <li>123 Business Ave<br>Digital City, DC 12345</li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 3rem 0 2rem;">
+            <div class="text-center">
+                <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.9rem;">
+                    © 2024 DigitalFlow. All rights reserved. | Privacy Policy | Terms of Service
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+        // Portfolio filtering functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const filter = this.getAttribute('data-filter');
+
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Filter portfolio items
+                    portfolioItems.forEach(item => {
+                        const category = item.getAttribute('data-category');
+
+                        if (filter === 'all' || category === filter) {
+                            item.style.display = 'block';
+                            anime({
+                                targets: item,
+                                opacity: [0, 1],
+                                translateY: [30, 0],
+                                duration: 600,
+                                easing: 'easeOutCubic'
+                            });
+                        } else {
+                            anime({
+                                targets: item,
+                                opacity: [1, 0],
+                                translateY: [0, -30],
+                                duration: 300,
+                                easing: 'easeInCubic',
+                                complete: function () {
+                                    item.style.display = 'none';
+                                }
+                            });
+                        }
+                    });
+                });
+            });
+        });
+
+        // Lightbox functionality
+        function openLightbox(itemId) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxData = {
+                1: {
+                    image: './resources/portfolio-1.jpg',
+                    title: 'TechCorp Website Redesign',
+                    category: 'Web Design & Development',
+                    description: 'A comprehensive website redesign project that transformed TechCorp\'s digital presence. We created a modern, responsive website with improved user experience, faster loading times, and better conversion optimization. The project included complete UI/UX overhaul, mobile optimization, and SEO improvements.',
+                    stats: [
+                        { value: '150%', label: 'Traffic Increase' },
+                        { value: '40%', label: 'Bounce Rate Reduction' },
+                        { value: '85%', label: 'Lead Generation Boost' }
+                    ]
+                },
+                2: {
+                    image: './resources/portfolio-2.jpg',
+                    title: 'FashionHub Online Store',
+                    category: 'E-commerce Development',
+                    description: 'Built a scalable e-commerce platform for FashionHub with advanced features including inventory management, payment processing, and customer analytics. The platform includes mobile app integration, social media shopping features, and personalized recommendations.',
+                    stats: [
+                        { value: '300%', label: 'Online Sales Growth' },
+                        { value: '250%', label: 'Conversion Rate Increase' },
+                        { value: '180%', label: 'Customer Base Expansion' }
+                    ]
+                },
+                3: {
+                    image: './resources/portfolio-3.jpg',
+                    title: 'FitLife Mobile App',
+                    category: 'Mobile App Design',
+                    description: 'Designed and developed a comprehensive fitness tracking application with social features, personalized workout plans, and nutrition tracking. The app includes gamification elements, community challenges, and integration with wearable devices.',
+                    stats: [
+                        { value: '50K+', label: 'Downloads' },
+                        { value: '4.8★', label: 'App Store Rating' },
+                        { value: '85%', label: 'User Retention Rate' }
+                    ]
+                },
+                4: {
+                    image: './resources/service-seo.jpg',
+                    title: 'LocalBiz SEO Success',
+                    category: 'Search Engine Optimization',
+                    description: 'Implemented a comprehensive SEO strategy for LocalBiz, including technical SEO, content optimization, and local search optimization. The campaign resulted in top rankings for competitive keywords and significant increase in organic traffic and local leads.',
+                    stats: [
+                        { value: '#1', label: 'Google Ranking' },
+                        { value: '400%', label: 'Organic Traffic Growth' },
+                        { value: '200%', label: 'Local Lead Increase' }
+                    ]
+                },
+                5: {
+                    image: './resources/portfolio-5.jpg',
+                    title: 'EcoBrand Social Launch',
+                    category: 'Social Media Marketing',
+                    description: 'Launched a comprehensive social media presence for EcoBrand, focusing on sustainable lifestyle content and community building. The campaign included content creation, influencer partnerships, and engagement strategies across multiple platforms.',
+                    stats: [
+                        { value: '500%', label: 'Follower Growth' },
+                        { value: '350%', label: 'Engagement Rate' },
+                        { value: '280%', label: 'Brand Mentions' }
+                    ]
+                },
+                6: {
+                    image: './resources/portfolio-6.jpg',
+                    title: 'InnoTech Rebranding',
+                    category: 'Brand Identity & Design',
+                    description: 'Complete rebranding project for InnoTech including logo design, visual identity system, brand guidelines, and marketing collateral. The new brand positioning helped establish them as a leading innovator in their industry.',
+                    stats: [
+                        { value: '120%', label: 'Brand Recognition' },
+                        { value: '90%', label: 'Market Position' },
+                        { value: '160%', label: 'Investor Interest' }
+                    ]
+                }
+            };
+
+            const data = lightboxData[itemId];
+            if (data) {
+                document.getElementById('lightbox-image').src = data.image;
+                document.getElementById('lightbox-title').textContent = data.title;
+                document.getElementById('lightbox-category').textContent = data.category;
+                document.getElementById('lightbox-description').textContent = data.description;
+
+                const statsContainer = document.getElementById('lightbox-stats');
+                statsContainer.innerHTML = '';
+                data.stats.forEach(stat => {
+                    const statElement = document.createElement('div');
+                    statElement.className = 'lightbox-stat';
+                    statElement.innerHTML = `
+                        <div class="lightbox-stat-value">${stat.value}</div>
+                        <div class="lightbox-stat-label">${stat.label}</div>
+                    `;
+                    statsContainer.appendChild(statElement);
+                });
+
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox on background click
+        document.getElementById('lightbox').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // Close lightbox on escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Load more projects functionality
+        function loadMoreProjects() {
+            // Simulate loading more projects
+            const button = document.querySelector('.btn-load-more');
+            button.textContent = 'Loading...';
+            button.disabled = true;
+
+            setTimeout(() => {
+                button.textContent = 'All Projects Loaded';
+                button.style.opacity = '0.6';
+
+                // Show success message
+                const message = document.createElement('div');
+                message.textContent = 'All projects have been loaded successfully!';
+                message.style.cssText = `
+                    background: var(--accent-success);
+                    color: white;
+                    padding: 1rem 2rem;
+                    border-radius: 10px;
+                    margin-top: 1rem;
+                    font-weight: 500;
+                `;
+                button.parentNode.appendChild(message);
+            }, 1500);
+        }
+    </script>
+    <script src="main-enhanced.js"></script>
+</body>
+
+</html>

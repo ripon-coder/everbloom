@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - DigitalFlow</title>
+    <meta name="description"
+        content="Comprehensive digital marketing services including SEO, PPC, social media, web design, and more. Transform your business with our expert solutions.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Animation Libraries -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            /* Light Mode Colors */
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F8FAFC;
+            --bg-tertiary: #F1F5F9;
+            --text-primary: #1F2937;
+            --text-secondary: #64748B;
+            --text-tertiary: #94A3B8;
+            --accent-primary: #2DD4BF;
+            --accent-secondary: #6B46C1;
+            --accent-success: #10B981;
+            --accent-warning: #F59E0B;
+            --border-color: #E5E7EB;
+            --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-heavy: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+            /* Gradients */
+            --primary-gradient: linear-gradient(135deg, #3B82F6 0%, #6B46C1 100%);
+            --secondary-gradient: linear-gradient(135deg, #F59E0B 0%, #F97316 100%);
+            --accent-gradient: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0F172A;
+            --bg-secondary: #1E293B;
+            --bg-tertiary: #334155;
+            --text-primary: #F8FAFC;
+            --text-secondary: #CBD5E1;
+            --text-tertiary: #94A3B8;
+            --accent-primary: #60A5FA;
+            --accent-secondary: #A78BFA;
+            --accent-success: #34D399;
+            --accent-warning: #FBBF24;
+            --border-color: #374151;
+            --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-heavy: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+
+            --primary-gradient: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
+            --secondary-gradient: linear-gradient(135deg, #FBBF24 0%, #FB923C 100%);
+            --accent-gradient: linear-gradient(135deg, #34D399 0%, #6EE7B7 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Navigation */
+        .navbar {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            transform: translateY(0);
+        }
+
+        [data-theme="dark"] .navbar {
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(51, 65, 85, 0.2);
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.75rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .navbar-brand img {
+            height: 50px;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--accent-primary);
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-tertiary);
+            transform: scale(1.05);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .theme-toggle i {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 140px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('./resources/hero-bg.jpg') center/cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 120px 0;
+            background: var(--bg-secondary);
+        }
+
+        .service-card {
+            background: var(--bg-primary);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-light);
+            transition: all 0.4s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            margin-bottom: 2rem;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px) rotateX(2deg);
+            box-shadow: var(--shadow-heavy);
+            border-color: var(--accent-primary);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-gradient);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+        }
+
+        .service-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-success);
+            font-weight: bold;
+        }
+
+        .service-price {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-service {
+            background: var(--primary-gradient);
+            border: none;
+            padding: 12px 24px;
+            font-weight: 600;
+            border-radius: 50px;
+            color: white;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 0.9rem;
+        }
+
+        .btn-service:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 120px 0;
+            background: var(--bg-primary);
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .process-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-primary), transparent);
+            z-index: 1;
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .process-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .process-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Why Choose Us Section */
+        .why-choose-section {
+            padding: 120px 0;
+            background: var(--bg-secondary);
+        }
+
+        .feature-card {
+            background: var(--bg-primary);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--accent-primary);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--secondary-gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .feature-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 0;
+            background: var(--primary-gradient);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .cta-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--accent-primary);
+            border: none;
+            padding: 14px 32px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+            background: #F8FAFC;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 80px 0 40px;
+        }
+
+        [data-theme="dark"] .footer {
+            background: #0F172A;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .footer-social a {
+            color: white;
+            font-size: 1.25rem;
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-social a:hover {
+            color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .footer-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            .theme-toggle {
+                width: 40px;
+                height: 40px;
+                margin-left: 0.5rem;
+            }
+
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+
+            .process-step::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="./logo-png.png">Everbloom</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="portfolio.html">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <div class="theme-toggle" id="theme-toggle" title="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title fade-in">Our Services</h1>
+            <p class="page-subtitle fade-in">
+                Comprehensive digital marketing solutions designed to accelerate your business growth and maximize your
+                online potential.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">What We Offer</h2>
+                <p class="section-subtitle">Tailored solutions to meet your unique business needs and drive measurable
+                    results</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">🔍</div>
+                        <h3 class="service-title">SEO Optimization</h3>
+                        <p class="service-description">
+                            Boost your organic visibility with cutting-edge SEO strategies. Our comprehensive approach
+                            includes technical SEO, content optimization, and link building to help you rank higher and
+                            drive qualified traffic.
+                        </p>
+                        <ul class="service-features">
+                            <li>Technical SEO Audit & Implementation</li>
+                            <li>Keyword Research & Strategy</li>
+                            <li>On-Page & Content Optimization</li>
+                            <li>Link Building & Digital PR</li>
+                            <li>Local SEO & Google My Business</li>
+                            <li>SEO Analytics & Reporting</li>
+                        </ul>
+                        <div class="service-price">Starting at $1,500/month</div>
+                        <button class="btn-service" onclick="window.location.href='contact.html'">Get Started</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">📱</div>
+                        <h3 class="service-title">Social Media Marketing</h3>
+                        <p class="service-description">
+                            Build engaging social media presence across all platforms. Create compelling content that
+                            resonates with your audience and drives meaningful engagement and conversions.
+                        </p>
+                        <ul class="service-features">
+                            <li>Social Media Strategy Development</li>
+                            <li>Content Creation & Curation</li>
+                            <li>Community Management</li>
+                            <li>Social Media Advertising</li>
+                            <li>Influencer Partnerships</li>
+                            <li>Social Analytics & Reporting</li>
+                        </ul>
+                        <div class="service-price">Starting at $2,000/month</div>
+                        <button class="btn-service" onclick="window.location.href='contact.html'">Get Started</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">💰</div>
+                        <h3 class="service-title">PPC Advertising</h3>
+                        <p class="service-description">
+                            Maximize ROI with targeted pay-per-click campaigns. Our data-driven approach ensures every
+                            dollar spent delivers measurable results across Google, Facebook, and other platforms.
+                        </p>
+                        <ul class="service-features">
+                            <li>Google Ads Management</li>
+                            <li>Facebook & Instagram Ads</li>
+                            <li>LinkedIn Advertising</li>
+                            <li>Display & Remarketing Campaigns</li>
+                            <li>Shopping Ads (eCommerce)</li>
+                            <li>Conversion Tracking & Optimization</li>
+                        </ul>
+                        <div class="service-price">15% of ad spend</div>
+                        <button class="btn-service" onclick="window.location.href='contact.html'">Get Started</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">✉️</div>
+                        <h3 class="service-title">Email Marketing</h3>
+                        <p class="service-description">
+                            Nurture leads and retain customers with personalized email campaigns. Automated workflows
+                            that deliver the right message at the right time to maximize engagement.
+                        </p>
+                        <ul class="service-features">
+                            <li>Email Strategy & Campaign Planning</li>
+                            <li>Template Design & Development</li>
+                            <li>Marketing Automation Setup</li>
+                            <li>List Segmentation & Personalization</li>
+                            <li>A/B Testing & Optimization</li>
+                            <li>Email Analytics & Reporting</li>
+                        </ul>
+                        <div class="service-price">Starting at $1,200/month</div>
+                        <button class="btn-service" onclick="window.location.href='contact.html'">Get Started</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">🎨</div>
+                        <h3 class="service-title">Web Design & Development</h3>
+                        <p class="service-description">
+                            Create stunning, conversion-focused websites that represent your brand. Mobile-first design
+                            with exceptional user experience and cutting-edge technology.
+                        </p>
+                        <ul class="service-features">
+                            <li>Custom Website Design</li>
+                            <li>Responsive Development</li>
+                            <li>UI/UX Optimization</li>
+                            <li>E-commerce Solutions</li>
+                            <li>CMS Integration (WordPress, etc.)</li>
+                            <li>Website Maintenance & Support</li>
+                        </ul>
+                        <div class="service-price">Starting at $5,000/project</div>
+                        <button class="btn-service" onclick="window.location.href='contact.html'">Get Started</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">📊</div>
+                        <h3 class="service-title">Analytics & Reporting</h3>
+                        <p class="service-description">
+                            Make informed decisions with comprehensive analytics and reporting. Track performance
+                            metrics and optimize campaigns for better results and higher ROI.
+                        </p>
+                        <ul class="service-features">
+                            <li>Google Analytics Setup & Configuration</li>
+                            <li>Custom Dashboard Creation</li>
+                            <li>Conversion Tracking Implementation</li>
+                            <li>Performance Analysis & Insights</li>
+                            <li>Monthly Reporting & Recommendations</li>
+                            <li>Data-Driven Strategy Optimization</li>
+                        </ul>
+                        <div class="service-price">Starting at $800/month</div>
+                        <button class="btn-service" onclick="window.location.href='contact.html'">Get Started</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Our Process</h2>
+                <p class="section-subtitle">A proven methodology that delivers consistent results for our clients</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="process-step fade-in">
+                        <div class="process-number">1</div>
+                        <h3 class="process-title">Discovery & Strategy</h3>
+                        <p class="process-description">
+                            We analyze your business, competitors, and target audience to develop a comprehensive
+                            digital marketing strategy tailored to your goals.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="process-step fade-in">
+                        <div class="process-number">2</div>
+                        <h3 class="process-title">Planning & Design</h3>
+                        <p class="process-description">
+                            Our team creates detailed campaign plans, designs creative assets, and sets up tracking
+                            systems to measure performance effectively.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="process-step fade-in">
+                        <div class="process-number">3</div>
+                        <h3 class="process-title">Implementation</h3>
+                        <p class="process-description">
+                            We launch your campaigns across chosen channels, ensuring all elements are properly
+                            configured and optimized for maximum performance.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="process-step fade-in">
+                        <div class="process-number">4</div>
+                        <h3 class="process-title">Optimize & Scale</h3>
+                        <p class="process-description">
+                            Continuous monitoring and optimization based on data insights. We refine strategies and
+                            scale successful campaigns for better ROI.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">Why Choose DigitalFlow</h2>
+                <p class="section-subtitle">What sets us apart from other digital marketing agencies</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">📈</div>
+                        <h3 class="feature-title">Data-Driven Results</h3>
+                        <p class="feature-description">
+                            Every decision we make is backed by data and analytics. We track, measure, and optimize all
+                            campaigns to ensure maximum ROI for your investment.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">🎯</div>
+                        <h3 class="feature-title">Customized Strategies</h3>
+                        <p class="feature-description">
+                            No one-size-fits-all solutions. We develop tailored strategies that align with your unique
+                            business goals, target audience, and industry dynamics.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">🔧</div>
+                        <h3 class="feature-title">Full-Service Agency</h3>
+                        <p class="feature-description">
+                            From strategy to execution, we handle all aspects of your digital marketing. One partner for
+                            all your online marketing needs and consistent brand messaging.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">👥</div>
+                        <h3 class="feature-title">Expert Team</h3>
+                        <p class="feature-description">
+                            Our team consists of certified professionals with years of experience in digital marketing.
+                            We stay updated with the latest trends and technologies.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">💬</div>
+                        <h3 class="feature-title">Transparent Communication</h3>
+                        <p class="feature-description">
+                            Regular updates, detailed reports, and clear communication. You'll always know what we're
+                            doing and how your campaigns are performing.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">⚡</div>
+                        <h3 class="feature-title">Proven Track Record</h3>
+                        <p class="feature-description">
+                            With 500+ successful campaigns and 95% client retention rate, we have the experience and
+                            expertise to deliver exceptional results for your business.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container text-center">
+            <h2 class="cta-title fade-in">Ready to Grow Your Business?</h2>
+            <p class="cta-subtitle fade-in">
+                Let's discuss your digital marketing needs and create a custom strategy that delivers results.
+            </p>
+            <a href="contact.html" class="btn btn-white fade-in">Start Your Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">Everbloom</div>
+                    <p class="footer-text">
+                        Transforming businesses through innovative digital marketing strategies. We help brands connect,
+                        engage, and grow in the digital landscape with data-driven solutions.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5 class="footer-title">Services</h5>
+                    <ul class="footer-links">
+                        <li><a href="#seo">SEO Optimization</a></li>
+                        <li><a href="#social">Social Media</a></li>
+                        <li><a href="#ppc">PPC Advertising</a></li>
+                        <li><a href="#web">Web Design</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5 class="footer-title">Company</h5>
+                    <ul class="footer-links">
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5 class="footer-title">Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Guides</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h5 class="footer-title">Contact</h5>
+                    <ul class="footer-links">
+                        <li><a href="mailto:hello@digitalflow.com">hello@digitalflow.com</a></li>
+                        <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                        <li>123 Business Ave<br>Digital City, DC 12345</li>
+                    </ul>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 3rem 0 2rem;">
+            <div class="text-center">
+                <p style="color: rgba(255,255,255,0.7); margin: 0; font-size: 0.9rem;">
+                    © 2024 DigitalFlow. All rights reserved. | Privacy Policy | Terms of Service
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="main-enhanced.js"></script>
+</body>
+
+</html>
