@@ -965,7 +965,7 @@
                         </div>
 
                         <!-- Contact Form -->
-                        <form id="contact-form">
+                        <form id="contact-form" action="https://formspree.io/f/mdkwbvyv" method="post">
                             <div class="form-content">
                                 <!-- Step 1: Personal Information -->
                                 <div class="form-step active" data-step="1">
@@ -1506,7 +1506,7 @@
         // Form submission
         document.getElementById('contact-form').addEventListener('submit', function (e) {
             e.preventDefault();
-
+            console.log("something");
             if (validateCurrentStep()) {
                 // Simulate form submission
                 const submitBtn = document.getElementById('submit-btn');
