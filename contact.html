@@ -1506,8 +1506,32 @@
         // Form submission
         document.getElementById('contact-form').addEventListener('submit', function (e) {
             e.preventDefault();
-            console.log("something");
             if (validateCurrentStep()) {
+            var data = new FormData(e.target);
+                fetch(e.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        status.innerHTML = "Thanks for your submission!";
+                        form.reset()
+                    } else {
+                        response.json().then(data => {
+                            if (Object.hasOwn(data, 'errors')) {
+                                status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                            } else {
+                                status.innerHTML = "Oops! There was a problem submitting your form"
+                            }
+                        })
+                    }
+                }).catch(error => {
+                    status.innerHTML = "Oops! There was a problem submitting your form"
+                });
+
+
                 // Simulate form submission
                 const submitBtn = document.getElementById('submit-btn');
                 const originalText = submitBtn.innerHTML;
@@ -1515,29 +1539,29 @@
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
                 submitBtn.disabled = true;
 
-                setTimeout(() => {
-                    // Show success message
-                    document.getElementById('success-message').classList.add('show');
+                // setTimeout(() => {
+                //     // Show success message
+                //     document.getElementById('success-message').classList.add('show');
 
-                    // Reset form
-                    this.reset();
-                    currentStep = 1;
-                    updateFormStep();
+                //     // Reset form
+                //     this.reset();
+                //     currentStep = 1;
+                //     updateFormStep();
 
-                    // Remove validation classes
-                    document.querySelectorAll('.form-control, .form-select').forEach(field => {
-                        field.classList.remove('is-valid', 'is-invalid');
-                    });
+                //     // Remove validation classes
+                //     document.querySelectorAll('.form-control, .form-select').forEach(field => {
+                //         field.classList.remove('is-valid', 'is-invalid');
+                //     });
 
-                    // Reset button
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
+                //     // Reset button
+                //     submitBtn.innerHTML = originalText;
+                //     submitBtn.disabled = false;
 
-                    // Hide success message after 5 seconds
-                    setTimeout(() => {
-                        document.getElementById('success-message').classList.remove('show');
-                    }, 5000);
-                }, 2000);
+                //     // Hide success message after 5 seconds
+                //     setTimeout(() => {
+                //         document.getElementById('success-message').classList.remove('show');
+                //     }, 5000);
+                // }, 2000);
             }
         });
 
