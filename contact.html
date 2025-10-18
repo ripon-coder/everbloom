@@ -1507,61 +1507,57 @@
         document.getElementById('contact-form').addEventListener('submit', function (e) {
             e.preventDefault();
             if (validateCurrentStep()) {
-            var data = new FormData(e.target);
-                fetch(e.target.action, {
-                    method: form.method,
+                const submitBtn = document.getElementById('submit-btn');
+                const originalText = submitBtn.innerHTML;
+                const successMessage = document.getElementById('success-message');
+
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+                submitBtn.disabled = true;
+
+                var data = new FormData(this);
+                fetch(this.action, {
+                    method: this.method,
                     body: data,
                     headers: {
                         'Accept': 'application/json'
                     }
                 }).then(response => {
                     if (response.ok) {
-                        status.innerHTML = "Thanks for your submission!";
-                        form.reset()
+                        // Show success message
+                        successMessage.classList.add('show');
+
+                        // Reset form
+                        this.reset();
+                        currentStep = 1;
+                        updateFormStep();
+
+                        // Remove validation classes
+                        document.querySelectorAll('.form-control, .form-select').forEach(field => {
+                            field.classList.remove('is-valid', 'is-invalid');
+                        });
+
+                        // Hide success message after 5 seconds
+                        setTimeout(() => {
+                            successMessage.classList.remove('show');
+                        }, 5000);
+
                     } else {
-                        response.json().then(data => {
+                        return response.json().then(data => {
                             if (Object.hasOwn(data, 'errors')) {
-                                status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                                alert("Error: " + data["errors"].map(error => error["message"]).join(", "));
                             } else {
-                                status.innerHTML = "Oops! There was a problem submitting your form"
+                                alert("Oops! There was a problem submitting your form.");
                             }
-                        })
+                        });
                     }
                 }).catch(error => {
-                    status.innerHTML = "Oops! There was a problem submitting your form"
+                    alert("Oops! There was a problem submitting your form. Network error.");
+                    console.error('Form submission error:', error);
+                }).finally(() => {
+                    // Reset button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
                 });
-
-
-                // Simulate form submission
-                const submitBtn = document.getElementById('submit-btn');
-                const originalText = submitBtn.innerHTML;
-
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
-                submitBtn.disabled = true;
-
-                // setTimeout(() => {
-                //     // Show success message
-                //     document.getElementById('success-message').classList.add('show');
-
-                //     // Reset form
-                //     this.reset();
-                //     currentStep = 1;
-                //     updateFormStep();
-
-                //     // Remove validation classes
-                //     document.querySelectorAll('.form-control, .form-select').forEach(field => {
-                //         field.classList.remove('is-valid', 'is-invalid');
-                //     });
-
-                //     // Reset button
-                //     submitBtn.innerHTML = originalText;
-                //     submitBtn.disabled = false;
-
-                //     // Hide success message after 5 seconds
-                //     setTimeout(() => {
-                //         document.getElementById('success-message').classList.remove('show');
-                //     }, 5000);
-                // }, 2000);
             }
         });
 
